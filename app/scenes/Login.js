@@ -1,16 +1,8 @@
 import React, {Component} from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  TextInput,
-  Button
-} from "react-native";
+import {ImageBackground, Text, StatusBar, View} from 'react-native'
+import { Container, Item, Input, Icon, Button } from 'native-base';
 
-import background_style from "EagleEyes/app/styles/background"
 import text_style from "EagleEyes/app/styles/text"
-import input_style from "EagleEyes/app/styles/inputText"
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -19,30 +11,33 @@ export default class Login extends React.Component {
 
   render(){
     return(
-      <ImageBackground
-        source={require('EagleEyes/app/img/bg_login.jpg')}
-        style={background_style.login}>
+      <Container>
+          <StatusBar backgroundColor={"transparent"} translucent={true}/>
+          <ImageBackground
+            style={{backgroundColor: "#29384E",flex: 1, padding: 20}}>
 
-        <Text style={text_style.welcome}>Login Eagle</Text>
+            <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+              <Text style={{fontSize: 24, color: "white", marginBottom: 10}}>Login</Text>
+              <Text style={{fontSize: 32, color: "white", marginBottom: 10}}>EagleEyes</Text>
+            </View>
 
-        <TextInput
-          keyboardType = {"numeric"}
-          placeholder="Số điện thoại"
-          placeholderTextColor={'white'}
-          style={input_style.login}
-          />
+            <View style={{flex: 2}}>
+              <Item rounded style={{marginBottom: 10, borderColor: "white"}}>
+                <Icon style={{color: "white"}} active name='ios-phone-portrait-outline' />
+                <Input style={{color: "white"}} keyboardType='numeric' placeholderTextColor='white' placeholder='Số điện thoại'/>
+              </Item>
 
-        <TextInput
-          keyboardType = {"numeric"}
-          placeholder="OTP"
-          placeholderTextColor={'white'}
-          style={input_style.login}
-          />
+              <Item rounded style={{marginBottom: 10, borderColor: "white"}}>
+                <Icon style={{color: "white"}} active name='ios-code-outline' />
+                <Input style={{color: "white"}} keyboardType='numeric' placeholderTextColor='white' placeholder='OTP'/>
+              </Item>
 
-        <Button
-          title="Login"
-          onPress={onPressLearnMore}/>
-      </ImageBackground>
+              <Button full rounded success>
+                <Text style={{color: "white", fontSize: 16}}>Login</Text>
+              </Button>
+            </View>
+          </ImageBackground>
+      </Container>
     );
   }
 }
